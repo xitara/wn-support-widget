@@ -4,7 +4,7 @@
     <?php if (!isset($error)): ?>
         <div class="support-container">
             <div class="support-logo">
-                <?= file_get_contents('./' . \Config::get('cms.pluginsPath') . '/xitara/supportwidget/assets/images/Logo.svg'); ?>
+                <?= file_get_contents(plugins_path('/xitara/supportwidget/assets/images/Logo.svg')); ?>
             </div>
             <div class="support-message">
                 <?php if ($lastSeen): ?>
