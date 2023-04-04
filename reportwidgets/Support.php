@@ -8,6 +8,7 @@ use Xitara\TwigExtender\Classes\TwigFilter;
 use Backend\Models\AccessLog;
 use Backend\Models\BrandSetting;
 use BackendAuth;
+use Config;
 
 /**
  * Support Report Widget
@@ -70,5 +71,6 @@ class Support extends ReportWidgetBase
         $this->vars['user'] = $user = BackendAuth::getUser();
         $this->vars['appName'] = BrandSetting::get('app_name');
         $this->vars['lastSeen'] = AccessLog::getRecent($user);
+        $this->vars['config'] = new Config();
     }
 }

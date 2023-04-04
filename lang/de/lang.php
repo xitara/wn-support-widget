@@ -13,5 +13,6 @@ return [
         'support_text' => 'So erreichen Sie unseren Support',
         'phone' => 'Telefon',
         'email' => 'E-Mail',
+        'home' => 'Web',
     ],
 ];

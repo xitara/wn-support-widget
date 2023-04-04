@@ -5,6 +5,7 @@ namespace Xitara\SupportWidget;
 use Backend;
 use Backend\Models\UserRole;
 use System\Classes\PluginBase;
+use System\Classes\PluginManager;
 
 /**
  * SupportWidget Plugin Information File
@@ -93,5 +94,27 @@ class Plugin extends PluginBase
                 ],
             ],
         ];
+    }
+
+    public function registerSettings()
+    {
+        $category = 'xitara.supportwidget::lang.settings.label';
+
+        if (PluginManager::instance()->exists('Xitara.Nexus') === true) {
+            if (($category = \Xitara\Nexus\Models\Settings::get('menu_text')) == '') {
+                $category = 'xitara.nexus::core.settings.name';
+            }
+        }
+
+        return [
+        'settings' => [
+            'category' => $category,
+            'label' => 'xitara.supportwidget::lang.submenu.label',
+            'description' => 'xitara.supportwidget::lang.submenu.description',
+            'icon' => 'icon-comments-o',
+            'class' => 'Xitara\SupportWidget\Models\Settings',
+            'order' => 20,
+        ],
+    ];
     }
 }

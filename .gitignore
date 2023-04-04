@@ -16,6 +16,7 @@ yarn.lock
 *sublime-*
 *sftp-config*
 /bash/config.sh
+config/config.php
 
 ### Composer ###
 composer.lock

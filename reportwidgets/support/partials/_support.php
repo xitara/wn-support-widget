@@ -4,7 +4,7 @@
     <?php if (!isset($error)): ?>
         <div class="support-container">
             <div class="support-logo">
-                <?= file_get_contents(plugins_path('/xitara/supportwidget/assets/images/Logo.svg')); ?>
+                <?= $filter->filterInject($config::get('xitara.supportwidget::logo')); ?>
             </div>
             <div class="support-message">
                 <?php if ($lastSeen): ?>
@@ -47,11 +47,17 @@
                 </p>
                 <p>
                     <?= e(trans('xitara.supportwidget::lang.widget.phone')) ?>:
-                    <?= $filter->filterPhoneLink('+49 (0) 861 2090577') ?>
+                    <?= $filter->filterPhoneLink($config::get('xitara.supportwidget::phone')) ?>
                 </p>
                 <p>
                     <?= e(trans('xitara.supportwidget::lang.widget.email')) ?>:
-                    <?= $filter->filterEmailLink('support@xitara.com') ?>
+                    <?= $filter->filterEmailLink($config::get('xitara.supportwidget::email')) ?>
+                </p>
+                <p>
+                    <?= e(trans('xitara.supportwidget::lang.widget.home')) ?>:
+                    <?= $filter->filterLink($config::get('xitara.supportwidget::home'), [
+                        'is_blank' => true,
+                    ]) ?>
                 </p>
             </div>
         </div>
